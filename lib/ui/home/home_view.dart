@@ -1,6 +1,8 @@
 import 'package:akademi_flutter_ders3/constants/constants.dart';
+import 'package:akademi_flutter_ders3/ui/area/area_view.dart';
 import 'package:akademi_flutter_ders3/ui/category_detail/category_view.dart';
 import 'package:akademi_flutter_ders3/ui/home/home_view_model.dart';
+import 'package:akademi_flutter_ders3/widget/area_item.dart';
 import 'package:akademi_flutter_ders3/widget/category_item.dart';
 import 'package:akademi_flutter_ders3/widget/section_header.dart';
 import 'package:animations/animations.dart';
@@ -114,6 +116,32 @@ class _HomeViewState extends State<HomeView> {
                                 ),
                               ),
                             ],
+                          ),
+                        ),
+                         Container(
+                          height: 110,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: model.areaList.meals!.length,
+                            padding: EdgeInsets.all(4),
+                            itemBuilder: (context, index) {
+                              return OpenContainer(
+                                closedElevation: 0,
+                                openElevation: 0,
+                                closedColor: Colors.transparent,
+                                openColor: Colors.transparent,
+                                transitionType: ContainerTransitionType.fade,
+                                transitionDuration: const Duration(milliseconds: 400),
+                                openBuilder: (context, action) {
+                                  return AreaView(area: model.areaList.meals![index].strArea);
+                                },
+                                closedBuilder: (context, action) {
+                                  return AreaListItem(
+                                    name: model.areaList.meals![index].strArea,
+                                  );
+                                },
+                              );
+                            },
                           ),
                         ),
                       ],

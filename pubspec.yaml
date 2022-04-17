@@ -42,6 +42,8 @@ dependencies:
   firebase_core: ^1.13.1
   firebase_auth: ^3.3.11
   cloud_firestore: ^3.1.10
+  firebase_messaging: ^11.2.12
+
 
   #urlcekme
   get_it: ^7.2.0

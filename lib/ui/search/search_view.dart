@@ -1,5 +1,6 @@
 import 'package:akademi_flutter_ders3/constants/constants.dart';
 import 'package:akademi_flutter_ders3/ui/search/search_view_model.dart';
+import 'package:akademi_flutter_ders3/widget/search_item.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -62,12 +63,12 @@ class SearchView extends StatelessWidget {
                                     //         .strMealThumb);
                                   },
                                   closedBuilder: (context, action) {
-                                    return Container();
-                                    /* SearchListItem( */
-                                    /*     name: model */
-                                    /*         .mealList!.meals![index].strMeal, */
-                                    /*     url: model.mealList!.meals![index] */
-                                    /*         .strMealThumb); */
+                                    return
+                                    SearchListItem(
+                                        name: model
+                                            .mealList!.meals![index].strMeal,
+                                        url: model.mealList!.meals![index]
+                                            .strMealThumb);
                                   },
                                 );
                               },

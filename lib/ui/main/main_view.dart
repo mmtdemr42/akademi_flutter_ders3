@@ -1,5 +1,6 @@
 import 'package:akademi_flutter_ders3/constants/constants.dart';
 import 'package:akademi_flutter_ders3/ui/home/home_view.dart';
+import 'package:akademi_flutter_ders3/ui/search/search_view.dart';
 import 'package:akademi_flutter_ders3/widget/tab_item.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MainViewModel>.reactive(
+      onModelReady: (model) => model.initMain(),
       viewModelBuilder: () => MainViewModel(),
       disposeViewModel: false,
       builder: (context, model, child) => WillPopScope(
@@ -49,7 +51,7 @@ class _MainViewState extends State<MainView> {
                 index: model.currentTabIndex,
                 children: [
                   HomeView(),
-                  HomeView(),
+                  SearchView(),
                   HomeView(),
                   HomeView(),
                 ],

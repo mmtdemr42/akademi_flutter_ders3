@@ -48,6 +48,22 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<MealListResponse> getMealsByArea(area) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'a': area};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<MealListResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'filter.php',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = MealListResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<MealDetailListResponse> searchMeals(name) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r's': name};
@@ -60,6 +76,22 @@ class _ApiService implements ApiService {
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = MealDetailListResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<AreaListReponse> getAreaList(area) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'a': area};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AreaListReponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'list.php',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = AreaListReponse.fromJson(_result.data!);
     return value;
   }
 
